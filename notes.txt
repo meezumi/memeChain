@@ -1,0 +1,34 @@
+creating notes file to get all the instructions saved up.
+
+1. Preparing a Wallet:
+coin ownership is transferred on the Blockchain as transactions, participants have an address which funds can be sent to and from. In their basic form wallets can just store these addresses
+
+creating a wallet class:
+    for the blockChain, the public key will act as an address, and the private key will be used to sign the transactions, to authenticate them on their end.
+    we send our public key along with the transaction, and it can be used to verify that our signature is valid and data has not been tampered with.
+
+now we added generateKeyPair() method:
+
+it uses Java.security.KeyPairGenerator to generate an Elliptic Curve KeyPair. These methods make and sets our Public and Private keys.
+
+2. Transactions and Signatures:
+    Each transaction will carry a certain amount of data:
+
+    > The public key(address) of the sender of funds.
+    > The public key(address) of the receiver of funds.
+    > The value/amount of funds to be transferred.
+    > Inputs, which are references to previous transactions that prove the sender has funds to send.
+    > Outputs, which shows the amount relevant addresses received in the transaction. ( These outputs are referenced as inputs in new transactions )
+    > A cryptographic signature, that proves the owner of the address is the one sending this transaction and that the data hasn’t been changed. ( for example: preventing a third party from changing the amount sent )
+
+now we create a transaction class:
+
+the main purpose of the signature is:
+    Firstly, they allow only the owner to spend their coins, secondly, they prevent others from tampering with their submitted transaction before a new block is mined
+
+    The private key is used to sign the data and the public key can be used to verify its integrity.
+
+
+
+
+

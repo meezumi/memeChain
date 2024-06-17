@@ -9,5 +9,9 @@
 > 3. requires proof of work mining to validate new blocks.
 > 4. can be checked to see if data in has is valid and unchanged.
 
+### Installing the bouncyCastle library: ###
+> https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk18on/1.78.1/bcprov-jdk18on-1.78.1.jar
+
+
 
 
