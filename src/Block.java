@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Block {
@@ -7,16 +8,23 @@ public class Block {
     public String hash; // stores the digital signature
     public String previousHash; // previous block's hash
 
-    private String data; // this will have out personal message.
-    private long timeStamp; // will save the time of the message/transaction when it was placed.
-    private int nonce;
+    public String merkleRoot;
+    public ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    public long timeStamp;
+    public int nonce;
+
+
+//    private String data; // this will have out personal message.
+//    private long timeStamp; // will save the time of the message/transaction when it was placed.
+//    private int nonce;
 
     // creating constructor for the class
 
-    public Block(String data, String previousHash) {
-        this.data = data;
+    public Block(String previousHash) {
+
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
+
         this.hash = calculateHash();
     }
 
@@ -24,7 +32,7 @@ public class Block {
 
     public String calculateHash() {
         String calculatedhash = StringUtil.applySha256(
-                previousHash + Long.toString(timeStamp) + Integer.toString(nonce) + data
+                previousHash + Long.toString(timeStamp) + Integer.toString(nonce) + merkleRoot
         );
         return calculatedhash;
     }
@@ -33,8 +41,8 @@ public class Block {
 
     public void mineBlock(int difficulty) {
 //        takes in an int called difficulty, this is the number of 0’s they must solve for.
-
-        String target = new String (new char[difficulty]).replace('\0', '0');
+        merkleRoot = StringUtil.getMerkleRoot(transactions);
+        String target = StringUtil.getDifficultyString(difficulty); // to create a string with difficulty * "0"
 
         while(!hash.substring(0, difficulty).equals(target)) {
             nonce++;
@@ -42,5 +50,21 @@ public class Block {
         }
         System.out.println("Block mined! : " + hash);
     }
+
+//    add transactions to this block
+    public boolean addTransaction(Transaction transaction) {
+//        process transaction and check if its valid, unless block is genesis block then ignore.
+        if(transaction == null) return false;
+        if((previousHash != "0")) {
+            if((transaction.processTransaction() != true)) {
+                System.out.println("Transaction failed to process. Discarded.");
+                return false;
+            }
+        }
+        transactions.add(transaction);
+        System.out.println("Transaction Successfully added to the block");
+        return true;
+    }
+
 }
 

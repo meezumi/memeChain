@@ -55,6 +55,22 @@ the signatures will now be verified by miners as a new transaction is added to t
 
     now, updating the wallet.java
 
+6. Adding transactions to the blocks:
+    will replace the already present data in the blocks with arrayList of transactions. since there can be a lot of transactions from a single block, so we will be using the merkel root of the transactions.
+
+    for that we will add a helper method to generate merkleRoot in StringUtils
+
+    next we replace the not useless data into merkleRoot in the Block class.
+
+7. Final Updates:
+    For the memeChain class, it needs:
+        > A genesis block which releases 100 memeCoins to walletA.
+        > update chain validity check that takes into account transactions.
+        > some test transaction to see that everything is working.
+
+    hence updating the memeChain class.
+
+
 
 
 
