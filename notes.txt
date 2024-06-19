@@ -28,6 +28,12 @@ the main purpose of the signature is:
 
     The private key is used to sign the data and the public key can be used to verify its integrity.
 
+the signatures will now be verified by miners as a new transaction is added to the block
+
+3. Testing the Wallets and Signatures
+
+    as we add wallets, testing out the signatures, and tracking the public key of the previous and current block to confirm that the data hasn't been tampered with and transaction is carried out successfully.
+
 
 
 

@@ -1,4 +1,3 @@
-package memeChain;
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
 

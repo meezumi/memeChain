@@ -49,7 +49,7 @@ public static byte[] applyECDSASig(PrivateKey privateKey, String input) {
 //    now to verify a String signature
 //    verifyECDSASig takes in the signature, public key and string data and returns true or false if the signature is valid.
 
-    public static boolean verifyECDSASSig(PublicKey publicKey, String data, byte[] signature) {
+    public static boolean verifyECDSASig(PublicKey publicKey, String data, byte[] signature) {
         try {
             Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");
             ecdsaVerify.initVerify(publicKey);
