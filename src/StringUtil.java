@@ -27,12 +27,10 @@ public class StringUtil {
             throw new RuntimeException(e);
         }
     }
-
 //    all it does is it takes a string and applies SHA256 algorithm to it, and returns the generated signature as a string
 
 //    this will apply the ECDSA signature and return the results
 //    applyECDSASig takes in the senders private key and string input, signs it and returns an array of bytes
-
 public static byte[] applyECDSASig(PrivateKey privateKey, String input) {
     Signature dsa;
     byte[] output = new byte[0];
@@ -51,7 +49,6 @@ public static byte[] applyECDSASig(PrivateKey privateKey, String input) {
 
 //    now to verify a String signature
 //    verifyECDSASig takes in the signature, public key and string data and returns true or false if the signature is valid.
-
     public static boolean verifyECDSASig(PublicKey publicKey, String data, byte[] signature) {
         try {
             Signature ecdsaVerify = Signature.getInstance("ECDSA", "BC");
