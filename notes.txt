@@ -34,6 +34,29 @@ the signatures will now be verified by miners as a new transaction is added to t
 
     as we add wallets, testing out the signatures, and tracking the public key of the previous and current block to confirm that the data hasn't been tampered with and transaction is carried out successfully.
 
+4. Inputs & Outputs 1: How cryptocurrency is owned ?
+    For us to own 1 bitcoin, we have to receive 1 Bitcoin. The ledger doesn’t add one bitcoin to us and minus one from the sender, the sender referenced that he/she previously received one bitcoin, then a transaction output was created showing that 1 Bitcoin was sent to your address. (Transaction inputs are references to previous transaction outputs.)
+
+    Our wallets balance is the sum of all the unspent transaction outputs(UTXOs) addressed to you
+
+    so we create a TransactionInput Class and a TransactionOutputs Class.
+
+
+
+5. Inputs & Outputs 2: Processing the transaction
+
+    Blocks in the chain may receive many transactions and the blockchain might be very, very long, it could take eons to process a new transaction because we have to find and check its inputs. To get around this we will keep an extra collection of all unspent transactions that can be used as inputs.
+
+    For this we will be adding an extra collection of all unspent transaction that can be used as inputs. (in the memeChain class)
+
+    now will add the process of transaction with the processTransaction boolean method in the Transaction.java
+
+    inputs are discarded out of the list of UTXOs, meaning a transaction output can only be used once as an input, so when all inputs are used (must be used) and hence the sender sends change back to themselves.
+
+    now, updating the wallet.java
+
+
+
 
 
 

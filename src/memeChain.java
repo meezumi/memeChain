@@ -2,12 +2,15 @@ import java.util.ArrayList;
 import com.google.gson.GsonBuilder;
 import java.security.Security;
 import java.util.Base64;
+import java.util.HashMap;
 
 
 public class memeChain {
 
     // will be using arrays for the blocks:
     public static ArrayList<Block> blockchain = new ArrayList<>();
+    public static HashMap<String, TransactionOutputs> UTXOs = new HashMap<String, TransactionOutputs>();
+//  list of all unspent transactions
     public static int difficulty = 5;
 
     public static Wallet walletA;
